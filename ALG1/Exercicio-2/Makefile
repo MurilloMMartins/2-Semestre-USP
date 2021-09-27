@@ -16,7 +16,7 @@ val: all clear
 	valgrind $(VFLAGS) $(BINARY) 
 
 zip:
-	zip -r name.zip main.c includes sources Makefile
+	zip -r Exercicio_2.zip main.c includes sources Makefile
 
 clean:
 	rm $(BINARY)
