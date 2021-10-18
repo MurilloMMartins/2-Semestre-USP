@@ -1,3 +1,15 @@
+/**
+ * @file main.c
+ * @author Murillo Moraes Martins (NºUSP: 12701599)
+ * @brief This program has the function to compress a "image" (in this case a integer matrix) using a quad-tree.
+ * It will print the "compressed" matrix in the end.
+ * @version 0.1
+ * @date 2021-10-18
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
