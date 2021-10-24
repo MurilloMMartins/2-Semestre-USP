@@ -37,6 +37,8 @@ int main(int argc, char *argv[]){
     int i,j;
     int MCD = AlgoritmoDeEuclidesEstendido(base, valor, &j, &i);
     //esse while é feito para garantir que teremos um número positivo de i
+    //ele pode ser feito pois um número negativo em Zd é equivalente a d + esse número
+    //por exemplo: em Z9: [-2] = [7]
     while(i < 0) i += base;
 
     printf("\n%d*%d + (%d)*%d = %d", i, valor, j, base, MCD);
@@ -69,21 +71,34 @@ int AlgoritmoDeEuclidesEstendido(int base, int valor, int *j, int *i){
         printf("\n\nO MCD final foi: %d\n\n", base);
         return base;
     }
-    else{
-        int tempj, tempi;
+    int tempj, tempi;
 
-        printf("\n%d = %d*%d + %d", base, base/valor, valor, base%valor);
+    printf("\n%d = %d*%d + %d", base, base/valor, valor, base%valor);
 
-        //passo recursivo
-        mcd = AlgoritmoDeEuclidesEstendido(valor, base % valor, &tempj, &tempi);
+    //passo recursivo
+    mcd = AlgoritmoDeEuclidesEstendido(valor, base % valor, &tempj, &tempi);
 
-        //substituindo i e j, assim chegando mais perto do inverso
-        *j = tempi;
-        *i = tempj - tempi*(base/valor);
+    //substituindo i e j, assim chegando mais perto do inverso
+    //substituimos da seguinte forma:
 
-        if(mcd == 1)
-            printf("1 = %d*%d + %d*%d\n", *i, valor, *j, base);
+    //MCD(a, b) = MCD(b, a%b)
+    //e como MCD(b, a%b) = i*b + j*(a%b):
+    //MCD(a, b) = i*b + j*(a%b)
 
-        return mcd;
-    }
+    //além disso, pelo fato de realizarmos divisões inteiras, sabemos que:
+    //a = (a//b)*b + (a%b)
+    //isolando a%b temos:
+    //a%b = a - (a//b)*b
+
+    //substituindo na equação inicial temos:
+    //MCD(a, b) = i*b + j*(a - (a//b)*b)
+    //MCD(a, b) = i*b + j*a - (a//b)*b*j
+    //MCD(a, b) = a*j + b*(i - (a//b)*j)
+    *j = tempi;
+    *i = tempj - tempi*(base/valor);
+
+    if(mcd == 1)
+        printf("1 = %d*%d + %d*%d\n", *i, valor, *j, base);
+
+    return mcd;
 }
