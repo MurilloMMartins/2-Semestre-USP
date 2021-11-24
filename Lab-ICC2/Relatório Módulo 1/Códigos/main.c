@@ -3,7 +3,7 @@
 #include <time.h>
 
 #define TAM_MAX 9
-#define ITERACOES 10
+#define ITERACOES 1
 
 void bubbleSort(int *v, int n);
 void insertionSort(int* v, int n);
