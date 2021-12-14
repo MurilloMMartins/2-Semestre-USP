@@ -1,3 +1,14 @@
+/**
+ * @file main.c
+ * @author Murillo Moraes Martins (12701599)
+ * @brief this is a implementation of a treap tree
+ * @version 0.1
+ * @date 2021-12-11
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
